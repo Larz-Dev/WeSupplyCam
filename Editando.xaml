@@ -1,0 +1,35 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeSupplyCam.Editando">
+
+    
+    
+    <StackLayout Padding="10" VerticalOptions="FillAndExpand">
+       
+        
+        
+        <Button Margin="2"  Text="Tomar Foto" Clicked="TakePhotoAsync" />
+
+        <Button  Margin="2"   Text="Elegir de almacenamiento" Clicked="SelectPhotoAsync" />
+        <Entry  Margin="2" Text="{Binding Title}" Placeholder="Renombrar ZIP" />
+        <!-- Aseguramos que el CollectionView ocupe un tamaño dinámico y se pueda desplazar -->
+        
+        
+        <CollectionView ItemsSource="{Binding Photos}" VerticalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Vertical" Padding="5">
+                        <Image Source="{Binding FilePath}" HeightRequest="350" />
+                        <Entry Text="{Binding Name}" Placeholder="Renombrar Foto" />
+                        <Button Text="Eliminar" Clicked="RemovePhotoAsync" />
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+       
+        
+        
+        <Button  Margin="2"  Text="Guardar y Compartir" Clicked="SaveAndShareZipAsync" />
+    
+    </StackLayout>
+</ContentPage>

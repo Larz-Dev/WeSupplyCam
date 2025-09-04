@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="WeSupplyCam.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:WeSupplyCam"
+    Shell.FlyoutBehavior="Flyout"
+    Title="WeSupplyCam">
+
+    <Shell.FlyoutHeader>
+        <Image
+        Source="logo.png"
+            
+            BackgroundColor="Transparent"
+        HeightRequest="185"
+        Aspect="AspectFit"
+        SemanticProperties.Description="dot net bot in a hovercraft number nine" />
+
+    </Shell.FlyoutHeader>
+
+    <ShellContent
+        Title="Inicio"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        
+        Route="MainPage" />
+    
+       <ShellContent
+     Title="Capturas"
+     ContentTemplate="{DataTemplate local:Archivos}"
+     
+     Route="Archivos" />
+    <Shell.FlyoutFooter>
+        <StackLayout Padding="10" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+            <Label Text="Desarrollado por LarzDev"
+               FontSize="18" 
+                   
+                TextColor="LightGray"
+                     FontAttributes="Bold"
+               HorizontalOptions="Center"
+               VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="https://github.com/Larz-Dev"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </Shell.FlyoutFooter>
+
+</Shell>

@@ -1,0 +1,72 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeSupplyCam.MainPage">
+
+    
+    
+    <StackLayout Padding="10" VerticalOptions="FillAndExpand">
+
+
+
+
+        <Grid Margin="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        
+            <Button Margin="2"  Text="Tomar Foto" Clicked="TakePhotoAsync"   Grid.Column="0"/>
+
+            <Button  Margin="2"   Text="Elegir almacenamiento" Clicked="SelectPhotoAsync"  Grid.Column="1" />
+
+
+        </Grid>
+
+        <Entry 
+    x:Name="TitleFileEntry" Text="{Binding TitleFile}" Placeholder="Ingrese el nombre del archivo" />
+        <!-- Aseguramos que el CollectionView ocupe un tamaño dinámico y se pueda desplazar -->
+        
+        
+        <CollectionView ItemsSource="{Binding Photos}" VerticalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Vertical" >
+                        <Image Margin="10" Source="{Binding FilePath}" HeightRequest="350" />
+                        <Entry Text="{Binding Name}" Placeholder="Renombrar Foto" />
+                 
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Margin="2" Text="Eliminar" Clicked="RemovePhotoAsync"   Grid.Column="0" BackgroundColor="#D34641"/>
+                            <Button Margin="2" Text="Exportar" Clicked="ExportPhoto"  Grid.Column="1"  BackgroundColor="#69B761" />
+
+                        </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+        </CollectionView>
+
+
+
+        <ActivityIndicator x:Name="activityIndicator" 
+            IsRunning="False"
+            IsVisible="False"
+                
+            VerticalOptions="CenterAndExpand" />
+
+
+        <Grid Margin="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button  Margin="2"   Text="Compartir Zip" Clicked="SaveAndShareZipAsync" BackgroundColor="#F37B47"  Grid.Column="0" />
+            <Button  Margin="2"  Text="Compartir PDF" Clicked="ExportPDF" BackgroundColor="#F37B47"  Grid.Column="1" />
+
+        </Grid>
+    </StackLayout>
+    
+</ContentPage>
